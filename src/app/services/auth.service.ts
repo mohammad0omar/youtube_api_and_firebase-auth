@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { User } from 'firebase';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -27,22 +28,15 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
-  async  loginWithGoogle() {
+  loginWithGoogle(resolve) {
     let self = this;
-    return new Promise((resolve, reject) => {
-      const provider = new auth.GoogleAuthProvider();
-      provider.addScope('https://www.googleapis.com/auth/youtube');
-      provider.addScope('https://www.googleapis.com/auth/youtube.readonly');
-      this.afAuth.auth.signInWithPopup(provider).then(res => {
-        self.credential = res.credential;
-        // localStorage.setItem()
-        // console.log(credential.accessToken);
-        console.log(self.credential)
-        localStorage.setItem('accessToken', this.credential.accessToken);
-        this.router.navigate(['home']);
-        resolve(true);
-      });
-      resolve(false);
+    const provider = new auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/youtube');
+    provider.addScope('https://www.googleapis.com/auth/youtube.readonly');
+    this.afAuth.auth.signInWithPopup(provider).then(res => {
+      self.credential = res.credential;
+      localStorage.setItem('accessToken', this.credential.accessToken);
+      resolve('true');
     });
 
   }
@@ -53,7 +47,6 @@ export class AuthService {
         this.router.navigate(['login']);
         resolve(true);
       });
-      resolve(false);
     })
   }
 }
