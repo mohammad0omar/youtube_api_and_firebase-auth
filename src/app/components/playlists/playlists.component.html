@@ -1,0 +1,16 @@
+<div class="card-deck">
+    <div class="card border-secondary" *ngFor="let playlist of playlists">
+        <img class="card-img-top" src="{{playlist.snippet.thumbnails.default.url}}" alt="Playlist image">
+        <div class="card-body">
+            <h6 class="card-title">{{playlist.snippet.title}}</h6>
+        </div>
+        <div class="card-footer p-0">
+
+            <button class="btn btn-light w-100 border-right" (click)="viewPlaylist(playlist)">View</button>
+            <div class="row m-0">
+                <button class="col-6 btn btn-light border-right" (click)="editPlaylist(playlist)">Edit</button>
+                <button class="col-6 btn btn-light " (click)="deletePlaylist(playlist)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
