@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.border{
+    border: 5px solid #dee2e6!important;
+}
+.btn{
+    font-size: 0.7rem!important;
+}
+.card-deck .card{
+    flex: unset;
+    margin: 1rem;
+}
