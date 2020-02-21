@@ -7,12 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class LoginGuard implements CanActivate {
   constructor(private router: Router) { }
-  canActivate(): boolean | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    return new Promise((resolve, reject) => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      resolve(user === null);
-    })
+  canActivate(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user !== null) this.router.navigate(['home']);
+    return user === null;
   }
 
 }
