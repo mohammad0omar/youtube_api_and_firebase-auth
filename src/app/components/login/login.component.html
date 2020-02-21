@@ -1,5 +1,10 @@
-<div class="bg-dark center" (click)="doLoginWithGoogle()">
-    <div class="google-btn">
+<div class="bg-dark cont" (click)="goToHome()" *ngIf="isLoggedIn">
+    <div class="center2 text-light w-50">
+        <h1>Successfuly Logged In, Click Here</h1>
+    </div>
+</div>
+<div class="bg-dark cont" (click)="doLoginWithGoogle()" *ngIf="!isLoggedIn">
+    <div class="google-btn center1">
         <div class="google-icon-wrapper">
             <img class="google-icon"
                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
