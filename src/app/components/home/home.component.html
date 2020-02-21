@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-light text-light  ">
         <a class="navbar-brand" href="#">Facebook Devc</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,15 +15,15 @@
             <form (submit)="search()" class="form-inline my-3 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" [(ngModel)]="searchKeyword"
                     name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <button class=" mx-3 btn btn-dark" (click)="logout()">Log Out</button>
+            <button class=" mx-3 btn btn-danger" (click)="logout()">Log Out</button>
         </div>
     </nav>
 </header>
 <div class="row m-0  mt-5">
-    <div class="container col-xl-5">
-        <button (click)="add()">Add a playlist</button>
+    <div class="container col-xl-6">
+        <button class="btn btn-success btn-lg" (click)="add()">Add a playlist</button>
         <app-playlists [playlists]="playlists" (view)="viewPlaylist($event)" (edit)="editPlaylist($event)"
             (delete)="deletePlaylist($event)">
         </app-playlists>
@@ -49,7 +49,7 @@
         </ng-template>
         <ng-template #view [ngIf]="isSearch">
             <div class="card-deck">
-                <div class="card border-secondary max-widh" *ngFor="let item of videos.items" >
+                <div class="card border-secondary max-widh" *ngFor="let item of videos.items">
                     <img class="card-img-top" src="{{item.snippet.thumbnails.default.url}}" alt="Playlist image">
                     <div class="card-body">
                         <h6 class="card-title">{{item.snippet.title}}</h6>

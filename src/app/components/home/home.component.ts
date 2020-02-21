@@ -56,9 +56,11 @@ export class HomeComponent implements OnInit {
     });
   }
   add() {
+    this.playlist = null;
+    this.playlistName = null;
     this.isSearch = false;
-    this.show = true;
     this.isEdit = false;
+    this.show = true;
   }
   editOrAddAPlaylist(event) {
     event.preventDefault();
@@ -75,7 +77,7 @@ export class HomeComponent implements OnInit {
         this.isEdit = false;
       });
     }
-    else if (!this.isEdit) {
+    else if (!this.isEdit && this.playlistName) {
       this.youtubeService.addPlaylist(this.playlistName).subscribe(res => {
         this.playlists.push(res)
         this.playlist = null;
